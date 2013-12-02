@@ -1,6 +1,13 @@
-<h1>Products</h1>
-<%= link_to "Create new product", new_product_path %>
-<% @products.each do |p| %>
-<p><%= link_to p.name, product_path(p.id) %></p>
-<p>$<%= p.formatted_price %></p>
-<% end %>
+<%= link_to "Add a product", new_product_path %>
+
+<!-- renders a helpful message with numbers of displayed vs. total entries -->
+<h1>Products <small><%= page_entries_info @products %></small></h1>
+
+<hr/>
+
+<ul id="products">
+  <%= render @products %>
+</ul>
+
+<!-- outputs several pagination links such as « First ‹ Prev ... 2 3 4 5 6 7 8 9 10 ... Next › Last » -->
+<%= paginate @products %>
